@@ -1,0 +1,92 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="sound-element">
+  <template>
+    <style>
+      :host {
+        background-color: lightgrey;
+        border-radius: 5px;
+        display: block;
+        text-align: center;
+        line-height: 35px;
+        margin: 0.5%;
+        padding: 5px;
+        vertical-align: middle;
+        width: 22%;
+      }
+      @media (max-width: 600px) {
+        :host { width: 46%; }
+      }
+      @media (max-width: 480px) {
+        :host { width: 99%; }
+      }
+      h1 {
+        font-size: 50px;
+        line-height: 90px;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 5;
+      }
+      img {
+        position: relative;
+        min-height: 100%;
+        width: auto;
+      }
+      .container {
+        background-color: white;
+        height: 150px;
+        overflow: hidden;
+        position: relative;
+        display:flex;
+        justify-content: center;
+      }
+    </style>
+    <div class="container">
+      <h1></h1>
+      <img src="{{img}}" alt="{{alt}}">
+    </div>
+    <h2>{{title}}</h2>
+  </template>
+  
+  <script>
+    class soundElement extends Polymer.Element {
+      static get is() { return 'sound-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'sound-element'
+          },
+          title: {
+            type: String,
+            value: 'Sound Sample',reflectToAttribute: true
+          },
+          img: {
+            type: String,
+            value: "http://www.knittedhome.com/_imgstore/5/4012872235/page_shop_23_fvFHHcHgzIXjTqCNoYU_v_mainimage/88Nep6V-oJOQaJP3g5lwLB2Sit0.png"
+          }, 
+          alt: {
+            type: String,
+            value: "img"
+          }
+        };
+      }
+      constructor() {
+        super();
+      }
+      handleIn() {
+        this.shadowRoot.querySelector('h1').innerHTML = '&#9658;';
+      }
+      handleOut() {
+        this.shadowRoot.querySelector('h1').innerHTML = '';
+      }
+      ready() {
+        super.ready();
+        this.addEventListener('mouseover', e => this.handleIn(e));
+        this.addEventListener('mouseout', e => this.handleOut(e));
+      }
+    }
+    window.customElements.define(soundElement.is, soundElement);
+  </script>
+</dom-module>

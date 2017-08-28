@@ -1,0 +1,58 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="sound-element.html">
+
+<dom-module id="soundboard-element">
+  <template>
+    <style>
+      :host, .row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+    </style>
+    
+    <div class="row">
+      <sound-element title="Bambi" img="http://livedoor.blogimg.jp/mm2602/imgs/8/e/8e92ca7a-s.jpg" alt="Bambi"></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+    </div>
+
+    <div class="row">
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+    </div>
+    
+    <div class="row">
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+    </div>
+    
+    <div class="row">
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+      <sound-element></sound-element>
+    </div>
+    
+  </template>
+
+  <script>
+    class soundboardElement extends Polymer.Element {
+      static get is() { return 'soundboard-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'soundboard-element'
+          }
+        };
+      }
+    }
+    window.customElements.define(soundboardElement.is, soundboardElement);
+  </script>
+</dom-module>
